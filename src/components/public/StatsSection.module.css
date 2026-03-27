@@ -1,0 +1,106 @@
+.stats {
+  background: var(--color-bg-alt);
+  padding: var(--sp-12) 0;
+  position: relative;
+}
+
+.stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
+  background-size: 200% 100%;
+  animation: gradientSlide 4s ease infinite;
+}
+
+@keyframes gradientSlide {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-8);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-8) var(--sp-4);
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.statItem.visible {
+  animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.statItem:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--sp-2);
+}
+
+.value {
+  font-family: var(--font-heading);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  .statItem {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--sp-4);
+    padding: var(--sp-4) var(--sp-6);
+  }
+
+  .icon {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+}

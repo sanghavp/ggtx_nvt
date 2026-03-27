@@ -1,0 +1,107 @@
+.footer {
+  background: var(--color-primary);
+  color: rgba(255, 255, 255, 0.9);
+  padding: var(--sp-16) 0 0;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.5fr;
+  gap: var(--sp-12);
+  padding-bottom: var(--sp-12);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.columnTitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: #fff;
+  margin: 0;
+}
+
+.schoolName {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.description {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* --- Links --- */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.link {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-secondary);
+  padding-left: var(--sp-2);
+}
+
+/* --- Contact --- */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  font-size: var(--fs-base);
+}
+
+/* --- Bottom --- */
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: var(--sp-6) 0;
+  text-align: center;
+}
+
+.copyright {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+}

@@ -1,0 +1,229 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border-light);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+/* --- Navigation --- */
+.navLeft, .navRight {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  flex: 1;
+}
+
+.navRight {
+  justify-content: flex-end;
+}
+
+.navLink {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), background var(--transition-fast);
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLink:hover::after {
+  width: 60%;
+}
+
+.navLinkActive {
+  color: var(--color-primary);
+}
+
+.navLinkActive::after {
+  width: 60%;
+  background: var(--color-accent);
+}
+
+/* --- Logo --- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  text-decoration: none;
+  flex-shrink: 0;
+  padding: 0 var(--sp-6);
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logoName {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.03em;
+}
+
+.logoSubtitle {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* --- Mobile toggle --- */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--sp-2);
+  z-index: calc(var(--z-header) + 10);
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.hamburger::before {
+  top: -7px;
+}
+
+.hamburger::after {
+  top: 7px;
+}
+
+.hamburgerOpen {
+  background: transparent;
+}
+
+.hamburgerOpen::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.hamburgerOpen::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* --- Mobile nav --- */
+.mobileNav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  z-index: var(--z-header);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.mobileNavOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileNavLink {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: var(--sp-3) var(--sp-6);
+  transition: color var(--transition-fast);
+}
+
+.mobileNavLink:hover {
+  color: var(--color-accent);
+}
+
+.mobileNavLinkActive {
+  color: var(--color-accent);
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: var(--sp-1);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .navLeft, .navRight {
+    display: none;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .mobileNav {
+    display: flex;
+  }
+
+  .logoText {
+    display: none;
+  }
+
+  .logo {
+    padding: 0;
+  }
+}

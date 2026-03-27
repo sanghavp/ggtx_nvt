@@ -1,0 +1,216 @@
+.page {
+  min-height: 70vh;
+}
+
+/* --- Container --- */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* --- Hero Section --- */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  padding: var(--sp-16) 0 var(--sp-20);
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-5xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--sp-6);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.heroDesc {
+  font-size: var(--fs-xl);
+  opacity: 0.9;
+  line-height: var(--lh-relaxed);
+}
+
+/* --- Content Section --- */
+.contentSection {
+  padding: var(--sp-20) 0 var(--sp-12);
+  background: var(--color-bg);
+}
+
+.contentLayout {
+  display: flex;
+  gap: var(--sp-12);
+  align-items: flex-start;
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  padding: var(--sp-10);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  margin-top: -100px; /* Pull up over hero */
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 350px;
+  flex-shrink: 0;
+  margin-top: -60px; /* Pull up a bit but less than main */
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Rich Text --- */
+.richText {
+  font-size: var(--fs-lg);
+  line-height: 1.8;
+  color: var(--color-text);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.richText p {
+  margin-bottom: var(--sp-6);
+  overflow-wrap: break-word;
+}
+
+.richText h2 {
+  font-size: var(--fs-2xl);
+  color: var(--color-primary);
+  margin: var(--sp-8) 0 var(--sp-4);
+  font-family: var(--font-heading);
+}
+
+/* --- Timeline Sidebar --- */
+.timelineBox {
+  background: #fff;
+  padding: var(--sp-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border-top: 4px solid var(--color-accent);
+}
+
+.timelineTitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  color: var(--color-primary);
+  margin-bottom: var(--sp-8);
+  padding-bottom: var(--sp-4);
+  border-bottom: 2px solid var(--color-bg-alt);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  position: relative;
+}
+
+/* Timeline dot connecting line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: 50px;
+}
+
+.timelineYear {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
+  z-index: 2;
+  box-shadow: 0 0 0 4px #fff;
+}
+
+.timelineCard {
+  background: var(--color-bg-alt);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-fast);
+}
+
+.timelineCard:hover {
+  transform: translateX(4px);
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  border-left: 3px solid var(--color-primary);
+}
+
+.milestoneTitle {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--sp-2);
+}
+
+.milestoneDesc {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--lh-normal);
+}
+
+.emptyTimeline {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .contentLayout {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: var(--fs-3xl);
+  }
+  
+  .mainContent {
+    margin-top: -60px;
+    padding: var(--sp-6);
+  }
+  
+  .richText {
+    font-size: var(--fs-base);
+  }
+}

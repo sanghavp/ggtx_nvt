@@ -1,0 +1,79 @@
+.wrapper {
+  position: fixed;
+  bottom: var(--sp-8);
+  right: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  z-index: var(--z-floating);
+}
+
+.button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+.messenger {
+  background: linear-gradient(135deg, #0084ff, #00c6ff);
+}
+
+.zalo {
+  background: linear-gradient(135deg, #0068ff, #0099ff);
+}
+
+.zaloText {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    bottom: var(--sp-4);
+    right: var(--sp-3);
+    gap: var(--sp-2);
+  }
+
+  .button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .button::before {
+    display: none;
+  }
+
+  .zaloText {
+    font-size: 0.65rem;
+  }
+}

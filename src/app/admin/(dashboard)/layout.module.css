@@ -1,0 +1,26 @@
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-bg-alt);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pageContent {
+  flex: 1;
+  padding: var(--sp-8);
+  overflow-y: auto;
+}
+
+/* --- Responsive Admin Layout --- */
+@media (max-width: 768px) {
+  .pageContent {
+    padding: var(--sp-4);
+  }
+}
