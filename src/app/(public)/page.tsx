@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { News, User } from '@/lib/db/models';
 import logger from '@/lib/logger';
 import styles from './page.module.css';
+import { getSiteSettings } from '@/lib/settings';
 
 export const metadata: Metadata = {
   title: 'Trang chủ | Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm',
@@ -30,12 +31,27 @@ async function getLatestNews() {
 }
 
 export default async function Home() {
-  const latestNews = await getLatestNews();
+  const [latestNews, settings] = await Promise.all([
+    getLatestNews(),
+    getSiteSettings()
+  ]);
+
+  const statsData = [
+    { value: settings['stat_students'] || '500+', label: 'Học viên', icon: '🎓' },
+    { value: settings['stat_teachers'] || '50+', label: 'Giảng viên', icon: '👨‍🏫' },
+    { value: settings['stat_years'] || '20+', label: 'Năm hoạt động', icon: '🏫' },
+    { value: settings['stat_courses'] || '15+', label: 'Ngành đào tạo', icon: '📚' },
+  ];
 
   return (
     <>
-      <HeroBanner />
-      <StatsSection />
+      <HeroBanner 
+        title={settings['hero_title']}
+        subtitle={settings['hero_subtitle']}
+        ctaText={settings['hero_cta_text']}
+        ctaLink={settings['hero_cta_link']}
+      />
+      <StatsSection stats={statsData} />
 
       {/* News Highlights */}
       <section className={styles.newsSection} id="news-highlights">

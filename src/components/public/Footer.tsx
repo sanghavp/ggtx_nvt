@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
-export default function Footer() {
+interface FooterProps {
+  address?: string;
+  phone?: string;
+  email?: string;
+}
+
+export default function Footer({ address, phone, email }: FooterProps = {}) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -34,15 +40,15 @@ export default function Footer() {
             <div className={styles.contactList}>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>📍</span>
-                <span>Địa chỉ trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm</span>
+                <span>{address || 'Địa chỉ trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm'}</span>
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>📞</span>
-                <span>0123 456 789</span>
+                <span>{phone || '0123 456 789'}</span>
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>✉️</span>
-                <span>info@nvt.edu.vn</span>
+                <span>{email || 'info@nvt.edu.vn'}</span>
               </div>
             </div>
           </div>
