@@ -91,7 +91,7 @@ export default function LoginPage() {
         </form>
 
         <div className={styles.footer}>
-          &copy; {new Date().getFullYear()} NVT Website.
+          &copy; <span suppressHydrationWarning>{new Date().getFullYear()}</span> NVT Website.
         </div>
       </div>
     </div>

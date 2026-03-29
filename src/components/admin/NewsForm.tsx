@@ -218,6 +218,7 @@ export default function NewsForm({ initialData }: NewsFormProps) {
                   value={publishedAt}
                   onChange={(e) => setPublishedAt(e.target.value)}
                   className={styles.input}
+                  suppressHydrationWarning
                 />
               </div>
             )}
