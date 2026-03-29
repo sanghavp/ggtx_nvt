@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import toast from 'react-hot-toast';
 import 'react-quill-new/dist/quill.snow.css';
 import styles from './AboutForm.module.css';
 
@@ -23,7 +24,6 @@ export default function AboutForm({ initialData }: AboutFormProps) {
   const [aboutContent, setAboutContent] = useState(initialData['about_content'] || '');
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState({ type: '', text: '' });
 
   const modules = useMemo(
     () => ({
@@ -45,7 +45,6 @@ export default function AboutForm({ initialData }: AboutFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage({ type: '', text: '' });
 
     try {
       const payload = {
@@ -62,11 +61,10 @@ export default function AboutForm({ initialData }: AboutFormProps) {
 
       if (!res.ok) throw new Error('Cập nhật thất bại');
       
-      setMessage({ type: 'success', text: 'Đã lưu cấu hình trang Giới thiệu thành công!' });
+      toast.success('Đã lưu cấu hình trang Giới thiệu thành công!');
       router.refresh();
-      setTimeout(() => setMessage({ type: '', text: '' }), 3000);
     } catch (error: any) {
-      setMessage({ type: 'error', text: error.message || 'Có lỗi xảy ra' });
+      toast.error(error.message || 'Có lỗi xảy ra');
     } finally {
       setIsSubmitting(false);
     }
@@ -78,12 +76,6 @@ export default function AboutForm({ initialData }: AboutFormProps) {
         <h1 className={styles.title}>Cài Đặt Trang Giới Thiệu</h1>
         <p className={styles.subtitle}>Thay đổi nội dung lịch sử và thành tựu của trung tâm.</p>
       </header>
-
-      {message.text && (
-        <div className={`${styles.alert} ${message.type === 'success' ? styles.alertSuccess : styles.alertError}`}>
-          {message.text}
-        </div>
-      )}
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <section className={styles.section}>

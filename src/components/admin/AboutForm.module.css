@@ -20,25 +20,6 @@
   margin: 0;
 }
 
-.alert {
-  padding: var(--sp-4);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--sp-6);
-  font-weight: var(--fw-medium);
-}
-
-.alertSuccess {
-  background: #ecfdf5;
-  color: #059669;
-  border: 1px solid #a7f3d0;
-}
-
-.alertError {
-  background: #fee2e2;
-  color: #b91c1c;
-  border: 1px solid #fca5a5;
-}
-
 .section {
   background: #fff;
   border: 1px solid var(--color-border);

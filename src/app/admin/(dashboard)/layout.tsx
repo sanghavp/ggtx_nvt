@@ -7,6 +7,7 @@ import "@/styles/variables.css";
 import "../../globals.css";
 import styles from "./layout.module.css";
 import { SidebarProvider } from '@/components/admin/SidebarContext';
+import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: {
@@ -31,6 +32,7 @@ export default function AdminLayout({
             <main className={styles.pageContent}>{children}</main>
           </div>
         </div>
+        <Toaster position="top-right" />
       </SidebarProvider>
     </AuthProvider>
   );

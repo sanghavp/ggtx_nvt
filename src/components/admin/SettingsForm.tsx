@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 import styles from './SettingsForm.module.css';
 
 interface SettingsFormProps {
@@ -29,12 +30,10 @@ export default function SettingsForm({ initialData }: SettingsFormProps) {
   const [statCourses, setStatCourses] = useState(initialData['stat_courses'] || '');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState({ type: '', text: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage({ type: '', text: '' });
 
     try {
       const payload = {
@@ -59,13 +58,10 @@ export default function SettingsForm({ initialData }: SettingsFormProps) {
 
       if (!res.ok) throw new Error('Cập nhật thất bại');
       
-      setMessage({ type: 'success', text: 'Đã lưu cấu hình thành công!' });
+      toast.success('Đã lưu cấu hình thành công!');
       router.refresh();
-      
-      // Tự tắt thông báo sau 3s
-      setTimeout(() => setMessage({ type: '', text: '' }), 3000);
     } catch (error: any) {
-      setMessage({ type: 'error', text: error.message || 'Có lỗi xảy ra' });
+      toast.error(error.message || 'Có lỗi xảy ra');
     } finally {
       setIsSubmitting(false);
     }
@@ -77,12 +73,6 @@ export default function SettingsForm({ initialData }: SettingsFormProps) {
         <h1 className={styles.title}>Cài Đặt Chung (Trang chủ & Footer)</h1>
         <p className={styles.subtitle}>Thay đổi các thông tin hiển thị cơ bản trên website.</p>
       </header>
-
-      {message.text && (
-        <div className={`${styles.alert} ${message.type === 'success' ? styles.alertSuccess : styles.alertError}`}>
-          {message.text}
-        </div>
-      )}
 
       <form onSubmit={handleSubmit} className={styles.form}>
         {/* Banner Chính */}

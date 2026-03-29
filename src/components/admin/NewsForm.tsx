@@ -4,6 +4,7 @@ import { useState, useRef, useMemo, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import ConfirmModal from './ConfirmModal';
+import toast from 'react-hot-toast';
 import 'react-quill-new/dist/quill.snow.css';
 import styles from './NewsForm.module.css';
 
@@ -33,7 +34,6 @@ export default function NewsForm({ initialData }: NewsFormProps) {
   );
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -81,7 +81,6 @@ export default function NewsForm({ initialData }: NewsFormProps) {
 
     try {
       setUploadingImage(true);
-      setError('');
       
       const formData = new FormData();
       formData.append('file', file);
@@ -96,7 +95,7 @@ export default function NewsForm({ initialData }: NewsFormProps) {
       
       setThumbnail(data.url);
     } catch (err: any) {
-      setError(err.message || 'Lỗi khi tải ảnh lên');
+      toast.error(err.message || 'Lỗi khi tải ảnh lên');
     } finally {
       setUploadingImage(false);
     }
@@ -105,13 +104,12 @@ export default function NewsForm({ initialData }: NewsFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !content) {
-      setError('Vui lòng nhập Tên bài viết và Nội dung');
+      toast.error('Vui lòng nhập Tên bài viết và Nội dung');
       return;
     }
 
     try {
       setIsSubmitting(true);
-      setError('');
 
       const url = isEditing ? `/api/admin/news/${initialData.id}` : '/api/admin/news';
       const method = isEditing ? 'PUT' : 'POST';
@@ -135,10 +133,11 @@ export default function NewsForm({ initialData }: NewsFormProps) {
         throw new Error('Đã có lỗi xảy ra khi lưu bài viết');
       }
 
+      toast.success(isEditing ? 'Đã cập nhật bài viết' : 'Đã thêm bài viết mới');
       router.push('/admin/news');
       router.refresh(); // Refresh lại danh sách
     } catch (err: any) {
-      setError(err.message || 'Thất bại');
+      toast.error(err.message || 'Thất bại');
     } finally {
       setIsSubmitting(false);
     }
@@ -147,16 +146,16 @@ export default function NewsForm({ initialData }: NewsFormProps) {
   const handleDelete = async () => {
     try {
       setIsDeleting(true);
-      setError('');
       const res = await fetch(`/api/admin/news/${initialData.id}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error('Không thể xóa bài viết');
       setIsDirty(false); // Ngăn trigger cảnh báo chưa lưu
+      toast.success('Đã xóa bài viết');
       router.push('/admin/news');
       router.refresh();
     } catch (err: any) {
-      setError(err.message || 'Lỗi khi xóa bài viết');
+      toast.error(err.message || 'Lỗi khi xóa bài viết');
       setIsDeleting(false);
       setShowDeleteModal(false);
     }
@@ -167,8 +166,6 @@ export default function NewsForm({ initialData }: NewsFormProps) {
       <header className={styles.header}>
         <h1 className={styles.pageTitle}>{isEditing ? 'Sửa bài viết' : 'Thêm bài viết mới'}</h1>
       </header>
-
-      {error && <div className={styles.errorBanner}>{error}</div>}
 
       <form onSubmit={handleSubmit} className={styles.formGrid}>
         

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ConfirmModal from './ConfirmModal';
+import toast from 'react-hot-toast';
 import styles from './MilestoneForm.module.css';
 
 interface MilestoneFormProps {
@@ -19,7 +20,6 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
   const [sortOrder, setSortOrder] = useState(initialData?.sortOrder || 0);
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
   
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -27,13 +27,12 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!year || !title) {
-      setError('Vui lòng nhập Năm và Tên sự kiện');
+      toast.error('Vui lòng nhập Năm và Tên sự kiện');
       return;
     }
 
     try {
       setIsSubmitting(true);
-      setError('');
 
       const url = isEditing ? `/api/admin/milestones/${initialData.id}` : '/api/admin/milestones';
       const method = isEditing ? 'PUT' : 'POST';
@@ -55,10 +54,11 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
         throw new Error('Đã có lỗi xảy ra');
       }
 
+      toast.success(isEditing ? 'Đã cập nhật sự kiện' : 'Đã thêm sự kiện mới');
       router.push('/admin/milestones');
       router.refresh();
     } catch (err: any) {
-      setError(err.message || 'Thất bại');
+      toast.error(err.message || 'Thất bại');
     } finally {
       setIsSubmitting(false);
     }
@@ -71,10 +71,11 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error('Không thể xóa');
+      toast.success('Đã xóa sự kiện');
       router.push('/admin/milestones');
       router.refresh();
     } catch (err: any) {
-      setError(err.message);
+      toast.error(err.message);
       setIsDeleting(false);
       setShowDeleteModal(false);
     }
@@ -85,8 +86,6 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
       <header className={styles.header}>
         <h1 className={styles.pageTitle}>{isEditing ? 'Sửa Cột Mốc' : 'Thêm Cột Mốc Mới'}</h1>
       </header>
-
-      {error && <div className={styles.errorBanner}>{error}</div>}
 
       <form onSubmit={handleSubmit} className={styles.formGrid}>
         <div className={styles.card}>
