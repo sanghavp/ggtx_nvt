@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Trung tâm GDNN-GDTX Nguyễn Văn Tố",
+    default: "Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm",
     template: "%s | NVT",
   },
   description:

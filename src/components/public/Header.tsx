@@ -51,7 +51,7 @@ export default function Header() {
         <Link href="/" className={styles.logo} id="site-logo">
           <Image
             src="/images/logo-v3.png"
-            alt="Trung tâm GDNN-GDTX Nguyễn Văn Tố"
+            alt="Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm"
             width={56}
             height={56}
             priority

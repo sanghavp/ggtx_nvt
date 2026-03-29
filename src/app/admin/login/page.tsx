@@ -51,7 +51,7 @@ export default function LoginPage() {
             <Image src="/images/logo-v3.png" alt="NVT Logo" width={60} height={60} />
           </div>
           <h1 className={styles.title}>Quản trị hệ thống</h1>
-          <p className={styles.subtitle}>Trung tâm GDNN-GDTX Nguyễn Văn Tố</p>
+          <p className={styles.subtitle}>Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>

@@ -1,10 +1,10 @@
-# Website Trung tâm GDNN-GDTX Nguyễn Văn Tố
+# Website Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm
 
-Xây dựng website cho **Trung tâm GDNN-GDTX Nguyễn Văn Tố** với giao diện lấy cảm hứng từ [tikluy.com.vn](https://tikluy.com.vn/), bao gồm 3 trang chính (Trang chủ, Tin tức, Giới thiệu) và trang Admin CMS đơn giản để quản lý nội dung.
+Xây dựng website cho **Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm** với giao diện lấy cảm hứng từ [tikluy.com.vn](https://tikluy.com.vn/), bao gồm 3 trang chính (Trang chủ, Tin tức, Giới thiệu) và trang Admin CMS đơn giản để quản lý nội dung.
 
 ### Thông tin thương hiệu (đã chốt)
 
-- **Tên**: Trung tâm GDNN-GDTX Nguyễn Văn Tố
+- **Tên**: Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm
 - **Viết tắt**: NVT
 - **Logo**: ![Logo NVT](file:///d:/Work/Project/GGTX/public/images/logo.png) (tông hồng + navy)
 - **Color scheme** (từ logo):

@@ -8,7 +8,7 @@ import logger from '@/lib/logger';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Trang chủ | Trung tâm GDNN-GDTX Nguyễn Văn Tố',
+  title: 'Trang chủ | Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm',
 };
 
 export const dynamic = 'force-dynamic';

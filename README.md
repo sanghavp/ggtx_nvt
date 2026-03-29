@@ -1,4 +1,4 @@
-# 🏫 Website Trung tâm GDNN-GDTX Nguyễn Văn Tố
+# 🏫 Website Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm
 
 Website giới thiệu và quản lý nội dung cho Trung tâm Giáo dục Nghề nghiệp - Giáo dục Thường xuyên Nguyễn Văn Tố.
 
@@ -79,7 +79,7 @@ NEXTAUTH_SECRET=tao-mot-chuoi-secret-bat-ky-o-day
 NEXTAUTH_URL=http://localhost:3000
 
 # App
-NEXT_PUBLIC_SITE_NAME=Trung tâm GDNN-GDTX Nguyễn Văn Tố
+NEXT_PUBLIC_SITE_NAME=Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm
 NEXT_PUBLIC_SITE_SHORT_NAME=NVT
 ```
 
@@ -167,4 +167,4 @@ src/
 
 ## 📝 License
 
-Private project - Trung tâm GDNN-GDTX Nguyễn Văn Tố.
+Private project - Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm.

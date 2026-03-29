@@ -24,7 +24,7 @@ async function seed() {
 
     // Seed site settings
     const settings = [
-      { key: 'hero_title', value: 'Trung tâm GDNN-GDTX Nguyễn Văn Tố', type: 'hero' },
+      { key: 'hero_title', value: 'Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm', type: 'hero' },
       { key: 'hero_subtitle', value: 'Nơi ươm mầm tri thức - Vững bước tương lai', type: 'hero' },
       { key: 'hero_cta_text', value: 'Tìm hiểu thêm', type: 'hero' },
       { key: 'hero_cta_link', value: '/gioi-thieu', type: 'hero' },
@@ -47,7 +47,7 @@ async function seed() {
         value: 'Trung tâm mang tên nhà yêu nước Nguyễn Văn Tố, kế thừa tinh thần hiếu học và đào tạo thế hệ trẻ vững vàng bước vào tương lai.',
         type: 'about',
       },
-      { key: 'footer_address', value: 'Địa chỉ trung tâm GDNN-GDTX Nguyễn Văn Tố', type: 'general' },
+      { key: 'footer_address', value: 'Địa chỉ trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm', type: 'general' },
       { key: 'footer_phone', value: '0123 456 789', type: 'general' },
       { key: 'footer_email', value: 'info@nvt.edu.vn', type: 'general' },
     ];
@@ -65,7 +65,7 @@ async function seed() {
 
     // Seed milestones
     const milestones = [
-      { year: '2000', title: 'Thành lập trung tâm', description: 'Trung tâm GDNN-GDTX Nguyễn Văn Tố chính thức được thành lập.', sortOrder: 1 },
+      { year: '2000', title: 'Thành lập trung tâm', description: 'Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm chính thức được thành lập.', sortOrder: 1 },
       { year: '2005', title: 'Mở rộng ngành đào tạo', description: 'Bổ sung thêm 5 ngành đào tạo mới đáp ứng nhu cầu xã hội.', sortOrder: 2 },
       { year: '2010', title: 'Nâng cấp cơ sở vật chất', description: 'Đầu tư xây dựng phòng học, phòng thực hành hiện đại.', sortOrder: 3 },
       { year: '2020', title: 'Chuyển đổi số', description: 'Áp dụng công nghệ số vào giảng dạy và quản lý.', sortOrder: 4 },

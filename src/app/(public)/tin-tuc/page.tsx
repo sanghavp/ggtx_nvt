@@ -7,7 +7,7 @@ import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Tin tức',
-  description: 'Tin tức mới nhất từ Trung tâm GDNN-GDTX Nguyễn Văn Tố.',
+  description: 'Tin tức mới nhất từ Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm.',
 };
 
 // Lấy dữ liệu trực tiếp trên server (Server Component)

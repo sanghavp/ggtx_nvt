@@ -9,7 +9,7 @@ interface HeroBannerProps {
 }
 
 export default function HeroBanner({
-  title = 'Trung tâm GDNN-GDTX Nguyễn Văn Tố',
+  title = 'Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm',
   subtitle = 'Nơi ươm mầm tri thức - Vững bước tương lai',
   ctaText = 'Tìm hiểu thêm',
   ctaLink = '/gioi-thieu',
@@ -49,7 +49,7 @@ export default function HeroBanner({
         <div className={styles.imageWrapper}>
           <Image
             src="/images/logo-v3.png"
-            alt="Logo Trung tâm GDNN-GDTX Nguyễn Văn Tố"
+            alt="Logo Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm"
             width={320}
             height={320}
             className={styles.heroImage}

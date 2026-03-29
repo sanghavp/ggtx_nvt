@@ -5,7 +5,7 @@ import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Giới thiệu',
-  description: 'Tìm hiểu về Trung tâm GDNN-GDTX Nguyễn Văn Tố, lịch sử hình thành và phát triển.',
+  description: 'Tìm hiểu về Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm, lịch sử hình thành và phát triển.',
 };
 
 // Đảm bảo trang luôn fetch data mới nhất (không cache SSR)
@@ -60,7 +60,7 @@ export default async function GioiThieuPage() {
           <div className={styles.contentLayout}>
             {/* Rich Text Content */}
             <div className={styles.mainContent}>
-              <div 
+              <div
                 className={styles.richText}
                 dangerouslySetInnerHTML={{ __html: aboutHtml }}
               />
@@ -70,7 +70,7 @@ export default async function GioiThieuPage() {
             <aside className={styles.sidebar}>
               <div className={styles.timelineBox}>
                 <h3 className={styles.timelineTitle}>Cột mốc lịch sử</h3>
-                
+
                 {milestones.length > 0 ? (
                   <div className={styles.timeline}>
                     {milestones.map((milestone: { id: number; year: string; title: string; description: string | null }) => (

@@ -34,7 +34,7 @@ export default function Footer() {
             <div className={styles.contactList}>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>📍</span>
-                <span>Địa chỉ trung tâm GDNN-GDTX Nguyễn Văn Tố</span>
+                <span>Địa chỉ trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm</span>
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>📞</span>
@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {currentYear} Trung tâm GDNN-GDTX Nguyễn Văn Tố. All rights reserved.
+            © {currentYear} Trung tâm GDNN-GDTX Nguyễn Văn Tố - Hoàn Kiếm. All rights reserved.
           </p>
         </div>
       </div>
