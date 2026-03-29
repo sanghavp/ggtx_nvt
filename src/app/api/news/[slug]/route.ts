@@ -13,7 +13,7 @@ export async function GET(
     const { slug } = await params;
 
     const article = await News.findOne({
-      where: { slug, is_published: true },
+      where: { slug, isPublished: true },
       include: [{ model: User, as: 'author', attributes: ['id', 'name'] }],
     });
 
