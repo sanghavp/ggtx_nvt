@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import MobileMenuToggle from "./MobileMenuToggle";
 import styles from "./AdminHeader.module.css";
 
 export default async function AdminHeader() {
@@ -6,9 +7,12 @@ export default async function AdminHeader() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.welcome}>
-        <h2>Chào mừng, {session?.user?.name || "Admin"}! 👋</h2>
-        <p className={styles.date}>{new Date().toLocaleDateString("vi-VN", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</p>
+      <div className={styles.leftGroup}>
+        <MobileMenuToggle />
+        <div className={styles.welcome}>
+          <h2>Chào mừng, {session?.user?.name || "Admin"}! 👋</h2>
+          <p className={styles.date}>{new Date().toLocaleDateString("vi-VN", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</p>
+        </div>
       </div>
       <div className={styles.userProfile}>
         <div className={styles.avatar}>

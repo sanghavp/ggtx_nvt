@@ -22,8 +22,9 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header} id="site-header">
-      <div className={styles.container}>
+    <>
+      <header className={styles.header} id="site-header">
+        <div className={styles.container}>
         {/* Mobile menu button */}
         <button
           className={styles.menuToggle}
@@ -74,22 +75,23 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-
-        {/* Mobile nav overlay */}
-        <nav className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavOpen : ''}`}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`${styles.mobileNavLink} ${isActive(link.href) ? styles.mobileNavLinkActive : ''}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
       </div>
     </header>
+
+      {/* Mobile nav overlay */}
+      <nav className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavOpen : ''}`}>
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`${styles.mobileNavLink} ${isActive(link.href) ? styles.mobileNavLinkActive : ''}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+    </>
   );
 }
 

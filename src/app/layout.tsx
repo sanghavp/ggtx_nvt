@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     template: "%s | NVT",
   },
   description:
-    "Trung tâm Giáo dục Nghề nghiệp - Giáo dục Thường xuyên Nguyễn Văn Tố. Nơi ươm mầm tri thức - Vững bước tương lai.",
+    "Trung tâm Giáo dục Nghề nghiệp - Giáo dục Thường xuyên Nguyễn Văn Tố - Hoàn Kiếm. Nơi ươm mầm tri thức - Vững bước tương lai.",
   keywords: [
     "GDNN",
     "GDTX",
-    "Nguyễn Văn Tố",
+    "Nguyễn Văn Tố - Hoàn Kiếm",
     "giáo dục nghề nghiệp",
     "giáo dục thường xuyên",
     "trung tâm đào tạo",

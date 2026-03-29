@@ -106,6 +106,10 @@
 }
 
 /* --- Responsive Sidebar --- */
+.sidebarOverlay {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .sidebar {
     width: 200px;
@@ -117,6 +121,26 @@
 }
 
 @media (max-width: 768px) {
+  .sidebarOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 290;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+    backdrop-filter: blur(2px);
+    display: block;
+  }
+
+  .sidebarOverlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .sidebar {
     position: fixed;
     left: -260px;

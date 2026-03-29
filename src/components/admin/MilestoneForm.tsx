@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ConfirmModal from './ConfirmModal';
 import styles from './MilestoneForm.module.css';
 
 interface MilestoneFormProps {
@@ -19,6 +20,9 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,10 +65,8 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
   };
 
   const handleDelete = async () => {
-    if (!confirm('Bạn có chắc chắn muốn xóa hệ kiện này không?')) return;
-    
     try {
-      setIsSubmitting(true);
+      setIsDeleting(true);
       const res = await fetch(`/api/admin/milestones/${initialData.id}`, {
         method: 'DELETE',
       });
@@ -73,7 +75,8 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
       router.refresh();
     } catch (err: any) {
       setError(err.message);
-      setIsSubmitting(false);
+      setIsDeleting(false);
+      setShowDeleteModal(false);
     }
   };
 
@@ -140,9 +143,9 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
             {isEditing && (
                <button
                  type="button"
-                 onClick={handleDelete}
+                 onClick={() => setShowDeleteModal(true)}
                  className={styles.deleteBtn}
-                 disabled={isSubmitting}
+                 disabled={isSubmitting || isDeleting}
                >
                  Xóa
                </button>
@@ -157,7 +160,7 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
             </button>
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || isDeleting}
               className={styles.submitBtn}
             >
               {isSubmitting ? 'Đang lưu...' : 'Lưu lại'}
@@ -165,6 +168,17 @@ export default function MilestoneForm({ initialData }: MilestoneFormProps) {
           </div>
         </div>
       </form>
+
+      {isEditing && (
+        <ConfirmModal
+          isOpen={showDeleteModal}
+          title="Xóa Cột Mốc"
+          message={`Bạn có chắc chắn muốn xóa sự kiện "${title || 'này'}" không? Chú ý: Hành động này không thể hoàn tác.`}
+          onConfirm={handleDelete}
+          onCancel={() => setShowDeleteModal(false)}
+          isLoading={isDeleting}
+        />
+      )}
     </div>
   );
 }

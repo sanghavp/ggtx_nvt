@@ -3,6 +3,7 @@
 import { useState, useRef, useMemo, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import ConfirmModal from './ConfirmModal';
 import 'react-quill-new/dist/quill.snow.css';
 import styles from './NewsForm.module.css';
 
@@ -35,6 +36,8 @@ export default function NewsForm({ initialData }: NewsFormProps) {
   const [error, setError] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   // Track form changes để cảnh báo khi rời trang
   const markDirty = useCallback(() => setIsDirty(true), []);
@@ -138,6 +141,24 @@ export default function NewsForm({ initialData }: NewsFormProps) {
       setError(err.message || 'Thất bại');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      setError('');
+      const res = await fetch(`/api/admin/news/${initialData.id}`, {
+        method: 'DELETE',
+      });
+      if (!res.ok) throw new Error('Không thể xóa bài viết');
+      setIsDirty(false); // Ngăn trigger cảnh báo chưa lưu
+      router.push('/admin/news');
+      router.refresh();
+    } catch (err: any) {
+      setError(err.message || 'Lỗi khi xóa bài viết');
+      setIsDeleting(false);
+      setShowDeleteModal(false);
     }
   };
 
@@ -258,6 +279,19 @@ export default function NewsForm({ initialData }: NewsFormProps) {
           </div>
 
           <div className={styles.actions}>
+            {isEditing && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setShowDeleteModal(true)}
+                  className={styles.deleteBtn}
+                  disabled={isSubmitting || uploadingImage || isDeleting}
+                >
+                  Xóa bài
+                </button>
+                <div style={{ flex: 1 }}></div>
+              </>
+            )}
             <button
               type="button"
               onClick={() => {
@@ -270,7 +304,7 @@ export default function NewsForm({ initialData }: NewsFormProps) {
             </button>
             <button
               type="submit"
-              disabled={isSubmitting || uploadingImage}
+              disabled={isSubmitting || uploadingImage || isDeleting}
               className={styles.submitBtn}
             >
               {isSubmitting ? 'Đang lưu...' : '💾 Lưu bài viết'}
@@ -278,6 +312,17 @@ export default function NewsForm({ initialData }: NewsFormProps) {
           </div>
         </div>
       </form>
+
+      {isEditing && (
+        <ConfirmModal
+          isOpen={showDeleteModal}
+          title="Xóa Bài Viết"
+          message={`Bạn có chắc chắn muốn xóa bài viết "${title || 'này'}" không? Hành động này không thể hoàn tác.`}
+          onConfirm={handleDelete}
+          onCancel={() => setShowDeleteModal(false)}
+          isLoading={isDeleting}
+        />
+      )}
     </div>
   );
 }

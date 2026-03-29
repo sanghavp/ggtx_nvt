@@ -17,7 +17,7 @@ export default function Footer({ address, phone, email }: FooterProps = {}) {
           {/* Column 1: About */}
           <div className={styles.column}>
             <h3 className={styles.columnTitle}>Trung tâm GDNN-GDTX</h3>
-            <h4 className={styles.schoolName}>Nguyễn Văn Tố</h4>
+            <h4 className={styles.schoolName}>Nguyễn Văn Tố - Hoàn Kiếm</h4>
             <p className={styles.description}>
               Nơi ươm mầm tri thức - Vững bước tương lai.
               Đào tạo nguồn nhân lực chất lượng cao cho xã hội.

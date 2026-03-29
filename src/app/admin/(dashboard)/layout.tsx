@@ -6,6 +6,7 @@ import AdminHeader from "@/components/admin/AdminHeader";
 import "@/styles/variables.css";
 import "../../globals.css";
 import styles from "./layout.module.css";
+import { SidebarProvider } from '@/components/admin/SidebarContext';
 
 export const metadata: Metadata = {
   title: {
@@ -22,13 +23,15 @@ export default function AdminLayout({
 }>) {
   return (
     <AuthProvider>
-      <div className={styles.adminLayout}>
-        <Sidebar />
-        <div className={styles.mainContent}>
-          <AdminHeader />
-          <main className={styles.pageContent}>{children}</main>
+      <SidebarProvider>
+        <div className={styles.adminLayout}>
+          <Sidebar />
+          <div className={styles.mainContent}>
+            <AdminHeader />
+            <main className={styles.pageContent}>{children}</main>
+          </div>
         </div>
-      </div>
+      </SidebarProvider>
     </AuthProvider>
   );
 }

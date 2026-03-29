@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
 import { SiteSetting } from '@/lib/db/models';
 import logger from '@/lib/logger';
@@ -51,6 +52,9 @@ export async function PUT(request: Request) {
         await SiteSetting.create({ key, value, type: 'general' });
       }
     }
+
+    // Phá cache layout toàn bộ trang khi có nội dung mới
+    revalidatePath('/', 'layout');
 
     return NextResponse.json({ success: true });
   } catch (error) {
