@@ -50,7 +50,7 @@ export default function Header() {
         {/* Logo center */}
         <Link href="/" className={styles.logo} id="site-logo">
           <Image
-            src="/images/logo-v2.png"
+            src="/images/logo-v3.png"
             alt="Trung tâm GDNN-GDTX Nguyễn Văn Tố"
             width={56}
             height={56}
