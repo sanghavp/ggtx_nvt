@@ -1,5 +1,6 @@
-import { Metadata } from "next";
-import AuthProvider from "@/components/admin/AuthProvider";
+import { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
+import AuthProvider from '@/components/admin/AuthProvider';
 import Sidebar from "@/components/admin/Sidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
 import "@/styles/variables.css";
