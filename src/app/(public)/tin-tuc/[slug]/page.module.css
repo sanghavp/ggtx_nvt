@@ -82,6 +82,21 @@
   font-size: var(--fs-lg);
   line-height: 1.8;
   color: var(--color-text);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.content pre,
+.content code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.content table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
 }
 
 .content h2 {
