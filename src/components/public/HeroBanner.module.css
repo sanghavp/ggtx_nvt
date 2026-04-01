@@ -3,9 +3,33 @@
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 50%, #1a1f3d 100%);
   overflow: hidden;
   padding: var(--sp-12) 0;
+}
+
+.bgImageLayer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.bgGradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 50%, #1a1f3d 100%);
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.bgGradientOverlayImage {
+  position: absolute;
+  inset: 0;
+  /* Phủ một lớp màu xanh đen đồng đều (opacity 75%) lên toàn bộ ảnh */
+  background: rgba(26, 31, 61, 0.75);
+  z-index: 0;
 }
 
 /* --- Background decorations --- */

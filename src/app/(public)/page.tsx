@@ -50,6 +50,7 @@ export default async function Home() {
         subtitle={settings['hero_subtitle']}
         ctaText={settings['hero_cta_text']}
         ctaLink={settings['hero_cta_link']}
+        bgImage={settings['hero_background_image']}
       />
       <StatsSection stats={statsData} />
 

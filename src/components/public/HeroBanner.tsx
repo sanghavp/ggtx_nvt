@@ -6,6 +6,7 @@ interface HeroBannerProps {
   subtitle?: string;
   ctaText?: string;
   ctaLink?: string;
+  bgImage?: string;
 }
 
 export default function HeroBanner({
@@ -13,15 +14,29 @@ export default function HeroBanner({
   subtitle = 'Nơi ươm mầm tri thức - Vững bước tương lai',
   ctaText = 'Tìm hiểu thêm',
   ctaLink = '/gioi-thieu',
+  bgImage,
 }: HeroBannerProps) {
   return (
     <section className={styles.hero} id="hero-banner">
-      {/* Background decorations */}
-      <div className={styles.bgDecor}>
-        <div className={styles.circle1} />
-        <div className={styles.circle2} />
-        <div className={styles.circle3} />
-      </div>
+      {/* Real Background Image */}
+      {bgImage && (
+        <div 
+          className={styles.bgImageLayer} 
+          style={{ backgroundImage: `url("${bgImage}")` }} 
+        />
+      )}
+
+      {/* Gradient Overlay moving from .hero background to its own layer so it can overlay the image */}
+      <div className={bgImage ? styles.bgGradientOverlayImage : styles.bgGradientOverlay} />
+
+      {/* Background decorations - Hide when there's an image to reduce noise */}
+      {!bgImage && (
+        <div className={styles.bgDecor}>
+          <div className={styles.circle1} />
+          <div className={styles.circle2} />
+          <div className={styles.circle3} />
+        </div>
+      )}
 
       <div className={styles.container}>
         <div className={styles.content}>

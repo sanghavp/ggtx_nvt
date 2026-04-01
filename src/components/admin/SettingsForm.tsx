@@ -17,6 +17,7 @@ export default function SettingsForm({ initialData }: SettingsFormProps) {
   const [heroSubtitle, setHeroSubtitle] = useState(initialData['hero_subtitle'] || '');
   const [heroCtaText, setHeroCtaText] = useState(initialData['hero_cta_text'] || '');
   const [heroCtaLink, setHeroCtaLink] = useState(initialData['hero_cta_link'] || '');
+  const [heroBgImage, setHeroBgImage] = useState(initialData['hero_background_image'] || '');
 
   // States cho Footer
   const [footerAddress, setFooterAddress] = useState(initialData['footer_address'] || '');
@@ -41,6 +42,7 @@ export default function SettingsForm({ initialData }: SettingsFormProps) {
         hero_subtitle: heroSubtitle,
         hero_cta_text: heroCtaText,
         hero_cta_link: heroCtaLink,
+        hero_background_image: heroBgImage,
         footer_address: footerAddress,
         footer_phone: footerPhone,
         footer_email: footerEmail,
@@ -67,6 +69,31 @@ export default function SettingsForm({ initialData }: SettingsFormProps) {
     }
   };
 
+  const handleUploadBg = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const toastId = toast.loading('Đang tải ảnh lên...');
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (res.ok && data.url) {
+        setHeroBgImage(data.url);
+        toast.success('Tải ảnh lên thành công', { id: toastId });
+      } else {
+        throw new Error(data.error || 'Tải ảnh thất bại');
+      }
+    } catch (error: any) {
+      toast.error(error.message || 'Có lỗi xảy ra', { id: toastId });
+    }
+  };
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -79,6 +106,15 @@ export default function SettingsForm({ initialData }: SettingsFormProps) {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Banner Trang Chủ</h2>
           <div className={styles.grid}>
+            <div className={styles.formGroup} style={{ gridColumn: '1 / -1' }}>
+              <label>Ảnh Nền Banner (Background Image)</label>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <input type="file" accept="image/*" onChange={handleUploadBg} className={styles.input} style={{ padding: '0.5rem', background: '#fff' }} />
+                {heroBgImage && (
+                  <img src={heroBgImage} alt="Preview" style={{ height: '60px', width: 'auto', borderRadius: '4px', objectFit: 'cover' }} />
+                )}
+              </div>
+            </div>
             <div className={styles.formGroup}>
               <label>Tiêu đề chính (Hero Title)</label>
               <input type="text" value={heroTitle} onChange={(e) => setHeroTitle(e.target.value)} className={styles.input} />
