@@ -95,7 +95,7 @@ export default async function ArticlePage({ params }: PageProps) {
           {/* Content */}
           <div
             className={styles.content}
-            dangerouslySetInnerHTML={{ __html: article.content }}
+            dangerouslySetInnerHTML={{ __html: article.content.replace(/&nbsp;|\u00a0/g, ' ') }}
           />
         </div>
       </article>

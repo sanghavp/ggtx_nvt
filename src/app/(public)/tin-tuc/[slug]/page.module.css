@@ -75,6 +75,9 @@
   color: var(--color-text);
   line-height: var(--lh-tight);
   margin: 0 0 var(--sp-8);
+  word-break: normal !important; /* Đảm bảo từ không bị bẻ đôi ngang hông (lỗi TRƯ/ỜNG) */
+  word-wrap: normal !important;
+  overflow-wrap: normal !important;
 }
 
 /* --- Rich text content --- */
@@ -82,9 +85,19 @@
   font-size: var(--fs-lg);
   line-height: 1.8;
   color: var(--color-text);
-  overflow-wrap: break-word; /* An toàn: chỉ xuống dòng những từ quá dài */
-  word-wrap: break-word;
-  word-break: normal; /* Ngăn chặn trình duyệt cắt chữ ngẫu nhiên giống break-all */
+}
+
+.content * {
+  word-break: normal !important; /* Bắt buộc không được bẻ chữ ngẫu nhiên */
+  overflow-wrap: normal !important; /* Tắt thủ phạm gây nhảy chữ do Chromium tính toán nhầm biên */
+  word-wrap: normal !important;
+  white-space: normal; /* Ngăn ngừa các đoạn copy paste mang css pre-wrap từ doc/word */
+}
+
+/* Chỉ áp dụng break-word cho link (URL) dài và thẻ pre/code */
+.content a {
+  overflow-wrap: break-word !important;
+  word-break: break-all !important;
 }
 
 .content pre,
