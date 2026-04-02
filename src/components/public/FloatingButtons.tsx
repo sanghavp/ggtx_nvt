@@ -3,6 +3,10 @@
 import styles from './FloatingButtons.module.css';
 
 export default function FloatingButtons() {
+  // NOTE: Tạm thời ẩn các nút này đi theo yêu cầu, có thể mở lại sau này
+  return null;
+
+  /*
   return (
     <div className={styles.wrapper} id="floating-buttons">
       <a
@@ -29,4 +33,5 @@ export default function FloatingButtons() {
       </a>
     </div>
   );
+  */
 }

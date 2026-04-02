@@ -58,7 +58,7 @@ export default function Header() {
             priority
           />
           <div className={styles.logoText}>
-            <span className={styles.logoName}>NGUYỄN VĂN TỐ</span>
+            <span className={styles.logoName}>NGUYỄN VĂN TỐ - HOÀN KIẾM</span>
             <span className={styles.logoSubtitle}>GDNN - GDTX</span>
           </div>
         </Link>

@@ -82,9 +82,9 @@
   font-size: var(--fs-lg);
   line-height: 1.8;
   color: var(--color-text);
-  overflow-wrap: break-word;
+  overflow-wrap: break-word; /* An toàn: chỉ xuống dòng những từ quá dài */
   word-wrap: break-word;
-  word-break: break-word;
+  word-break: normal; /* Ngăn chặn trình duyệt cắt chữ ngẫu nhiên giống break-all */
 }
 
 .content pre,
