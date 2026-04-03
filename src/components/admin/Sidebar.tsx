@@ -12,6 +12,7 @@ const MENU_ITEMS = [
   { name: "Cài đặt chung", path: "/admin/settings", icon: "⚙️" },
   { name: "Trang Giới thiệu", path: "/admin/about", icon: "🏢" },
   { name: "Cột mốc Lịch sử", path: "/admin/milestones", icon: "⏳" },
+  { name: "Tài khoản", path: "/admin/profile", icon: "👤" },
 ];
 
 export default function Sidebar() {
